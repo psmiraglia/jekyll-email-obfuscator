@@ -1,7 +1,8 @@
-span.3m41l::before {
-    content: attr(data-x) "\0040";
-}
-
-span.3m41l::after {
-    content: attr(data-y);
+span.o3m41l {
+    &:before {
+        content: attr(data-x) "\0040";
+    }
+    &:after {
+        content: attr(data-y);
+    }
 }
