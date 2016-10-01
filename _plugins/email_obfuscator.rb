@@ -19,34 +19,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 module Jekyll
     class EmailTag < Liquid::Tag
-
-        SPAN_CLASS = "3m41l"
-
+        SPAN_CLASS = "o3m41l"
+        MAILTO = '&#109;ai&#108;to&#58;'
         AT = 'varaiRi8'
         DOT = 'chie6Aet'
         DASH = 'oaPoo7eo'
         UNDERSCORE = 'Oe8eed6M'
 
-        MAILTO = '&#109;ai&#108;to&#58;'
-
-        private
-        def saltify(s)
-            "&#123;" + s + "&#126;"
-        end
-
-        private
-        def encode(s)
-            s = s.gsub("@", saltify(AT))
-            s = s.gsub(".", saltify(DOT))
-            s = s.gsub("-", saltify(DASH))
-            s = s.gsub("_", saltify(UNDERSCORE))
+        def initialize(tag_name, text, tokens)
+            super
+            @email = text
         end
 
         def render(context)
-            values = INPUT.split("@")
+            values = @email.split("@")
             data_user = values[0]
             data_domain = values[1]
-            obfuscated = encode(INPUT)
+            obfuscated = encode(@email)
 
             at = saltify(AT)
             dot = saltify(DOT)
@@ -64,6 +53,19 @@ module Jekyll
                 "data-y=\"#{data_domain}\"></span>" +
             "</a>"
         end
+
+        def encode(s)
+            s = s.gsub("@", saltify(AT))
+            s = s.gsub(".", saltify(DOT))
+            s = s.gsub("-", saltify(DASH))
+            s = s.gsub("_", saltify(UNDERSCORE))
+        end
+
+        def saltify(s)
+            "&#123;" + s + "&#126;"
+        end
+
+        private :saltify, :encode
     end
 end
 
