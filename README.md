@@ -5,7 +5,7 @@ Jekyll plugin to obfuscate email addresses. Plugin inspired by a
 
 ## How to install and use the plugin
 
-1.  Copy `_plugings/email_obfuscator.rb` under `<siteroot>/_plugings/` and
+1.  Copy `_plugins/email_obfuscator.rb` under `<siteroot>/_plugins/` and
     `_sass/_email-obfuscator.scss` under `<siteroot>/_sass/`
 
 2.  Append to `<siteroot>/css/main.scss`
